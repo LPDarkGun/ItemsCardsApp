@@ -70,7 +70,7 @@ const ItemCard = ({
               <h1>Tags:</h1>
               <div className='flex gap-1'>
                 {item.tags.map((tag, idx) => (
-                  <span key={idx} className={`badge ${getColor(idx)} text-white`} dangerouslySetInnerHTML={{ __html: highlightText(tag, searchText) }}></span>
+                  <span key={tag} className={`badge ${getColor(idx)} text-white`} dangerouslySetInnerHTML={{ __html: highlightText(tag, searchText) }}></span>
                 ))}
               </div>
             </div>

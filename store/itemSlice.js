@@ -1,4 +1,3 @@
-// store/itemSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -35,7 +34,9 @@ const itemSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      state.list.push(action.payload);
+      if (!state.list.some(item => item._id === action.payload._id)) {
+        state.list.push(action.payload);
+      }
     },
     removeItem: (state, action) => {
       state.list = state.list.filter((item) => item._id !== action.payload);
@@ -57,7 +58,9 @@ const itemSlice = createSlice({
         state.list = action.payload;
       })
       .addCase(addItemToDB.fulfilled, (state, action) => {
-        state.list.push(action.payload);
+        if (!state.list.some(item => item._id === action.payload._id)) {
+          state.list.push(action.payload);
+        }
       })
       .addCase(updateItemInDB.fulfilled, (state, action) => {
         const { id, newItem } = action.payload;
