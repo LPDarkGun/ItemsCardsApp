@@ -1,4 +1,3 @@
-// pages/api/items.js
 import { mongooseConnect } from "@/lib/mongoose";
 import { Items } from "@/model/items";
 
@@ -32,16 +31,5 @@ export default async function handle(req, res) {
       await Items.deleteMany();
     }
     res.json({ message: 'Deleted' });
-  }
-
-  if (method === 'CHECK_STORAGE') {
-    const dbStats = await Items.db.db.stats(); // Get DB stats
-    const storageSize = dbStats.storageSize / (1024 * 1024); // Convert to MB
-
-    if (storageSize >= 490) {
-      await Items.deleteMany();
-      return res.json({ message: 'Storage limit exceeded. All items deleted.' });
-    }
-    res.json({ message: 'Storage size within limit.', storageSize });
   }
 }

@@ -39,10 +39,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(fetchItems());
-    const interval = setInterval(() => {
-      checkStorageSize();
-    }, 60000); // Check every 60 seconds
-    return () => clearInterval(interval);
   }, [dispatch]);
 
   const formatTags = (tagsString) => {
@@ -110,18 +106,6 @@ export default function Home() {
 
   const handleClearItems = async () => {
     dispatch(clearItemsFromDB()).then(() => dispatch(fetchItems()));
-  };
-
-  const checkStorageSize = async () => {
-    try {
-      const response = await axios.post('/api/items', { method: 'CHECK_STORAGE' });
-      console.log(response.data.message);
-      if (response.data.message === 'Storage limit exceeded. All items deleted.') {
-        dispatch(clearItemsFromDB());
-      }
-    } catch (error) {
-      console.error('Error checking storage size:', error);
-    }
   };
 
   const highlightText = (text, highlight) => {
