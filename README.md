@@ -139,3 +139,5 @@ This project is licensed under the MIT License.
 ```
 
 This markdown file should provide all the necessary information for setting up, running, and understanding the project.# ItemsCardsApp
+# ItemsCardsApp
+# ItemsCardsApp
