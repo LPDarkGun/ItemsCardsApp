@@ -16,7 +16,6 @@ The Items Cards App is a web application that allows users to add, edit, and rem
 - Persistent storage using MongoDB.
 - Smooth animations using GSAP.
 - Sortable items using Sortable.js.
-- Automatic deletion of items when storage exceeds 490MB to prevent overuse of storage space.
 
 
 ## Cons
